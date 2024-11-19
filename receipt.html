@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .receipt-container {
+            margin-top: 20px;
+            border-top: 2px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .receipt-content {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container" action="insert.php" method="POST">
+    <h2>Billing Form</h2>
+    <div class="form-group">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" placeholder="Enter patient name">
+    </div>
+    <div class="form-group">
+        <label for="patientID">Patient ID:</label>
+        <input type="number" id="patientID" placeholder="Enter patient ID">
+    </div>
+    <div class="form-group">
+        <label for="patientSex">Patient Sex:</label>
+        <select id="patientSex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="tabletName">Tablet Name:</label>
+        <input type="text" id="tabletName" placeholder="Enter tablet name">
+    </div>
+    <div class="form-group">
+        <label for="tabletPrice">Tablet Price:</label>
+        <input type="number" id="tabletPrice" placeholder="Enter tablet price">
+    </div>
+    <div class="form-group">
+        <label for="syrupName">Syrup Name:</label>
+        <input type="text" id="syrupName" placeholder="Enter syrup name">
+    </div>
+    <div class="form-group">
+        <label for="syrupPrice">Syrup Price:</label>
+        <input type="number" id="syrupPrice" placeholder="Enter syrup price">
+    </div>
+    <div class="form-group">
+        <label for="wardType">Ward Type:</label>
+        <select id="wardType">
+            <option value="general">General Ward</option>
+            <option value="icu">ICU</option>
+        </select>
+    </div>
+    <button onclick="calculateBilling()">Calculate Billing</button>
+
+    <!-- Receipt Container -->
+    <div class="receipt-container">
+        <h3>Receipt</h3>
+        <div class="receipt-content" id="receiptContent"></div>
+    </div>
+</div>
+
+<script>
+    function calculateBilling() {
+        var patientName = document.getElementById('patientName').value;
+        var patientID = document.getElementById('patientID').value;
+        var patientSex = document.getElementById('patientSex').value;
+        var tabletName = document.getElementById('tabletName').value;
+        var tabletPrice = parseFloat(document.getElementById('tabletPrice').value) || 0;
+        var syrupName = document.getElementById('syrupName').value;
+        var syrupPrice = parseFloat(document.getElementById('syrupPrice').value) || 0;
+        var wardType = document.getElementById('wardType').value;
+
+        // Calculate tablet and syrup cost
+        var tabletCost = tabletPrice * 1; // Assuming quantity is 1 for simplicity
+        var syrupCost = syrupPrice * 1; // Assuming quantity is 1 for simplicity
+
+        // Calculate bed rest cost
+        var bedRestCost = (wardType === 'general') ? 500 : 1000;
+
+        // Calculate total cost
+        var totalCost = tabletCost + syrupCost + bedRestCost;
+
+        // Display receipt
+        var receiptContent = `
+            <p><strong>Patient Name:</strong> ${patientName}</p>
+            <p><strong>Patient ID:</strong> ${patientID}</p>
+            <p><strong>Patient Sex:</strong> ${patientSex}</p>
+            <p><strong>Tablet Details:</strong> ${tabletName} ($${tabletPrice})</p>
+            <p><strong>Syrup Details:</strong> ${syrupName} ($${syrupPrice})</p>
+            <p><strong>Bed Rest Cost:</strong> $${bedRestCost}</p>
+            <p><strong>Total Cost:</strong> $${totalCost}</p>
+        `;
+
+        document.getElementById('receiptContent').innerHTML = receiptContent;
+    }
+</script>
+
+</body>
+</html>

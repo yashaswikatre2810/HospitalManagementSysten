@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container" action="insert.php" method="POST">
+    <h2>Login</h2>
+    <div class="form-group">
+        <label for="userType">Select User Type:</label>
+        <select id="userType">
+            <option value="admin">Administration</option>
+            <option value="doctor">Doctor</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" placeholder="Enter patient name">
+    </div>
+    <div class="form-group">
+        <label for="patientAge">Patient Age:</label>
+        <input type="number" id="patientAge" placeholder="Enter patient age">
+    </div>
+    <div class="form-group">
+        <label for="patientEmail">Patient Email:</label>
+        <input type="text" id="patientEmail" placeholder="Enter patient Email">
+    </div>
+    <div class="form-group">
+        <label for="patientID">Patient ID:</label>
+        <input type="number" id="patientID" placeholder="Enter patient Id">
+    </div>
+    
+    <div class="form-group">
+        <label for="patientGender">Patient Gender:</label>
+        <select id="patientGender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <button onclick="submitForm()">Submit</button>
+</div>
+
+<script>
+    function submitForm() {
+        var userType = document.getElementById('userType').value;
+        var patientName = document.getElementById('patientName').value;
+        var patientAge = document.getElementById('patientAge').value;
+        var patientGender = document.getElementById('patientGender').value;
+
+        // Perform further actions based on user type and collected data
+        console.log('User Type:', userType);
+        console.log('Patient Name:', patientName);
+        console.log('Patient Age:', patientAge);
+        console.log('Patient Gender:', patientGender);
+    }
+</script>
+
+</body>
+</html>

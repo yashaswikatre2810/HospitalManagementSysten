@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container" action="insert.php" method="POST">
+    <h2>Doctor's Form</h2>
+    <div class="form-group">
+        <label for="diseaseName">Disease Name:</label>
+        <input type="text" id="diseaseName" placeholder="Enter disease name">
+    </div>
+    <div class="form-group">
+        <label for="enrollmentDate">Date of Enrollment:</label>
+        <input type="date" id="enrollmentDate">
+    </div>
+    <div class="form-group">
+        <label for="nextAppointmentDate">Next Appointment Date:</label>
+        <input type="date" id="nextAppointmentDate">
+    </div>
+    <div class="form-group">
+        <label for="patientID">Patient ID:</label>
+        <input type="number" id="patientID" placeholder="Enter patient ID">
+    </div>
+    <div class="form-group">
+        <label for="previousPrescription">Previous Prescription:</label>
+        <textarea id="previousPrescription" placeholder="Enter previous prescription"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="tabletName">Tablet Name:</label>
+        <input type="text" id="tabletName" placeholder="Enter tablet name">
+    </div>
+    <div class="form-group">
+        <label for="syrupName">Syrup Name:</label>
+        <input type="text" id="syrupName" placeholder="Enter syrup name">
+    </div>
+    <button onclick="submitForm()">Submit</button>
+</div>
+
+<script>
+    function submitForm() {
+        var diseaseName = document.getElementById('diseaseName').value;
+        var enrollmentDate = document.getElementById('enrollmentDate').value;
+        var nextAppointmentDate = document.getElementById('nextAppointmentDate').value;
+        var patientID = document.getElementById('patientID').value;
+        var previousPrescription = document.getElementById('previousPrescription').value;
+        var tabletName = document.getElementById('tabletName').value;
+        var syrupName = document.getElementById('syrupName').value;
+
+        // Perform further actions with the collected data
+        console.log('Disease Name:', diseaseName);
+        console.log('Date of Enrollment:', enrollmentDate);
+        console.log('Next Appointment Date:', nextAppointmentDate);
+        console.log('Patient ID:', patientID);
+        console.log('Previous Prescription:', previousPrescription);
+        console.log('Tablet Name:', tabletName);
+        console.log('Syrup Name:', syrupName);
+    }
+</script>
+
+</body>
+</html>
